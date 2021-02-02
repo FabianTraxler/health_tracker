@@ -1,0 +1,53 @@
+.data_point{
+    width: 99vw;
+    height: 15vh;
+
+    border: 0.5vw solid black;
+    background-color: aliceblue;
+    line-height: 15vh;
+
+    float: left;
+
+    font-size: 140%;
+    font-size: bold;
+}
+
+.key{
+    width: 45%;
+    float: left;
+    height: 100%;
+
+    text-align: left;
+    border-right: 1px dotted grey;
+    padding-left: 5%;
+}
+
+.not_set{
+    background-color: rgba(115, 197, 235, 0.698);
+}
+
+.range{
+    width: 45%;
+    height: 100%;
+    margin: 0px;
+
+    float: left;
+
+    margin-left: 2%;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0);
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 50px;
+    border-radius: 0px;
+    cursor: pointer;
+    background: rgba(38, 40, 139, 0);
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+  }
+  

@@ -1,0 +1,47 @@
+.data_wrapper{
+    width: 100vw;
+    height: 100vh;
+}
+
+.data_header{
+    width: 100vw;
+    height: 10vh;
+    line-height: 10vh;
+    background-color: rgba(0, 0, 0, 0.5);
+
+
+    color: whitesmoke;
+}
+
+.header_column{
+    width: 28vw;
+    float: left;
+    height: 100%;
+
+    font-size: 150%;
+
+    border-right: 0.33vw dotted white;
+}
+
+.calendar{
+    width: 15vw;
+    height: 100%;
+    float: left;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.active{
+    background-color: rgba(233, 214, 214, 0.596);
+}
+
+
+.data_points{
+    width: 100vw;
+    height: 90vh;
+
+    background-color: whitesmoke;
+
+    overflow: scroll;
+}
