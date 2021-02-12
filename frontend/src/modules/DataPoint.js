@@ -10,7 +10,7 @@ export default class DataPoint extends React.Component {
     }
 
     storeValue(key, value){
-        var url = `/api/${this.props.active}`
+        var url = `${process.env.PUBLIC_URL}/api/${this.props.active}`
         let formData = new FormData()
         formData.append(key, value)
         fetch(url , {
@@ -41,12 +41,11 @@ export default class DataPoint extends React.Component {
         data_name = data_name.replace("_", " ");
         let classname = "not_set";
         let color = {}
-        let value = 0
-        if (this.props.value !== -1 && this.props.value !== null){
+        let value = this.props.value
+        if (value !== -1 && value !== null){
             classname = ""
-            value = this.props.value
-            let color_red = 255 - 40 * this.props.value;
-            let color_green = 0 + 40 * this.props.value;
+            let color_red = 255 - 40 * value;
+            let color_green = 0 + 40 * value;
             color = {backgroundColor: `rgba(${color_red}, ${color_green}, 0,0.5)`};
         }
         classname = "data_point " + classname

@@ -23,6 +23,19 @@
     border-right: 0.33vw dotted white;
 }
 
+.react-datepicker-wrapper{
+    width: 15vw;
+    height: 100%;
+    float: left;
+}
+
+.react-datepicker__input-container{
+    width: 15vw;
+    height: 100%;
+    float: left;
+}
+
+
 .calendar{
     width: 15vw;
     height: 100%;

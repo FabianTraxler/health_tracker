@@ -14,6 +14,7 @@ app.set("port", process.env.PORT || 7777);
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV === "production") {
+
   app.use(express.static("frontend/build"));
 }
 
@@ -32,6 +33,17 @@ app.get("/api/time", db.time.getAll);
 app.post("/api/time", db.time.saveValues);
 app.get("/api/time/columns", db.time.getColumns)
 
-app.listen(app.get("port"), () => {
-  console.log(`Find the server at: http://localhost:${app.get("port")}/`); // eslint-disable-line no-console
-});
+// Express only serves static assets in production
+if (process.env.NODE_ENV === "production") {
+  
+  app.use(express.static("frontend/build"));
+
+  app.listen(app.get("port"), () => {
+    console.log(`Find the server at ${process.env.PUBLIC_URL}`); // eslint-disable-line no-console
+  });
+}
+else{
+  app.listen(app.get("port"), () => {
+    console.log(`Find the server at: http://localhost:${app.get("port")}/`); // eslint-disable-line no-console
+  });
+}

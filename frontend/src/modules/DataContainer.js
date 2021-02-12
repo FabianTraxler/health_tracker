@@ -1,6 +1,8 @@
 import React from "react";
 import DataPoint from "./DataPoint.js"
 
+import DatePicker from "react-datepicker";
+
 import calendar_button from './style/calendar.png'
 
 import "./style/DataContainer.css"
@@ -8,11 +10,12 @@ import "./style/DataContainer.css"
 export default class DataContainer extends React.Component {
     constructor(props) {
         super(props);
-  
+
+        var today = new Date();
         this.state = {
-            data_points: {},
+           
             active: "",
-            date: "",
+            date: today.getUTCDate(),
             loaded: false
         };
 
@@ -20,15 +23,29 @@ export default class DataContainer extends React.Component {
         this.createDataPoints = this.createDataPoints.bind(this)
         this.createDataHeader = this.createDataHeader.bind(this)
         this.setActive = this.setActive.bind(this)
+        this.showDate = this.showDate.bind(this)
+        this.changeDate = this.changeDate.bind(this)
+    }
 
+    changeDate(date){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        console.log(date);
+        this.setState({date: date})
     }
 
     showDate(){
-        
+            return (
+              <DatePicker selected={this.state.date} onChange={date => this.changeDate(date)} />
+            );
     }
 
     fetchData(){
-        var url = '/api/data/today'
+        var url = `${process.env.PUBLIC_URL}/api/data/today`
         fetch(url , {
             headers: {
                 'Content-Type': 'application/json'
@@ -80,10 +97,15 @@ export default class DataContainer extends React.Component {
 
         let background = {backgroundImage: `url(${calendar_button})`}
 
+        const CalendarIcon = ({ value, onClick }) => (
+            <button className="calendar" style={background} onClick={onClick}>
+            </button>
+          );
+
         return(
             <div className="data_header">
                 {data_header}
-                <div className="calendar" style={background} onClick={this.showDate}></div>
+                <DatePicker selected={this.state.date} onChange={date => this.changeDate(date)} customInput={<CalendarIcon />} />
             </div>
         )
     }
